@@ -21,15 +21,16 @@ void bubbleSort(vector<int> &v, int n)
           printPass(v, i);
           for (int j = 0; j < n - i - 1; j++)
           {
+               print(v);
                if (v[j] > v[j + 1])
                {
                     int temp = v[j];
                     v[j] = v[j + 1];
                     v[j + 1] = temp;
-                    cout << "Iteration: YES" << endl;
+                    cout << "Swapped: YES" << endl;
                }
                else
-                    cout << "Iteration: NO" << endl;
+                    cout << "Swapped: NO" << endl;
                print(v);
           }
      }
