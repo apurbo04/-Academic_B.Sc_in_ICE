@@ -1,55 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void print(vector<int> &v)
-{
-     for (auto it : v)
-          cout << it << " ";
-     cout << '\n';
+void printVector(const vector<int> &v) {
+    for (int num : v) {
+        cout << num << " ";
+    }
+    cout << endl;
 }
-void printPass(vector<int> &v, int pass)
-{
-     cout << "\nPass " << pass + 1 << ": " << '\n';
-     for (auto it : v)
-          cout << it << " ";
-     cout << '\n';
-}
-void bubbleSort(vector<int> &v, int n)
-{
-     for (int i = 0; i < n - 1; i++)
-     {
-          printPass(v, i);
-          for (int j = 0; j < n - i - 1; j++)
-          {
-               print(v);
-               if (v[j] > v[j + 1])
-               {
-                    int temp = v[j];
-                    v[j] = v[j + 1];
-                    v[j + 1] = temp;
-                    cout << "Swapped: YES" << endl;
-               }
-               else
-                    cout << "Swapped: NO" << endl;
-               print(v);
-          }
-     }
-}
-int main()
-{
-     ios::sync_with_stdio(false);
-     cin.tie(nullptr);
 
-     int n;
-     cin >> n;
-     vector<int> v(n);
-     for (int i = 0; i < n; i++)
-     {
-          cin >> v[i];
-     }
-     bubbleSort(v, n);
-     cout<<"Final Array: ";
-     print(v);
+void bubbleSort(vector<int> &v, int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (v[j] > v[j + 1]) {
+                swap(v[j], v[j + 1]);
+                printVector(v); // Print after each swap
+            }
+        }
+    }
+}
 
-     return 0;
+int main() {
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    
+    cout << "Initial Array: ";
+    printVector(v); // Print initial array
+    
+    bubbleSort(v, n);
+    
+    cout << "Sorted Array: ";
+    printVector(v); // Print final sorted array
+    
+    return 0;
 }
